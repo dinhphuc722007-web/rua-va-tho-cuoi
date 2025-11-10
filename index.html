@@ -1,90 +1,195 @@
-<!DOCTYPE html>
+
+          <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rùa và Thỏ</title>
+    <title>Truyện: Rùa và Thỏ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+    
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f0f2f5;
-            color: #333;
+            background-color: #e0e0e0; /* Nền xám nhạt */
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 20px;
         }
-        .container {
-            max-width: 800px; /* Kích thước nội dung dễ đọc */
-            margin: 20px auto; /* Căn giữa */
-            background: #ffffff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+
+        /* Font chữ tiêu đề kiểu truyện tranh */
+        .comic-font {
+            font-family: 'Bangers', 'Comic Sans MS', cursive;
+            letter-spacing: 2px;
         }
-        h1, h2 {
-            color: #1c1e21;
-            border-bottom: 2px solid #f0f2f5;
-            padding-bottom: 10px;
+
+        /* Khung chứa toàn bộ truyện */
+        .comic-book {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border: 4px solid #000;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-        h1 {
+
+        /* Tiêu đề chính của truyện */
+        .comic-title {
+            font-size: 4rem; /* Cỡ chữ rất lớn */
+            color: #fff;
+            background: #d90429; /* Nền đỏ nổi bật */
             text-align: center;
-            font-size: 2.5em;
+            padding: 20px;
+            margin: 10px;
+            border: 4px solid #000;
+            text-shadow: 4px 4px 0 #000; /* Đổ bóng kiểu comic */
+            transform: skew(-5deg); /* Hơi nghiêng cho cá tính */
         }
-        img {
-            max-width: 100%; /* Giúp ảnh không bị vỡ khung */
+
+        /* Khung lưới chứa các ô truyện */
+        .panel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Chia làm 2 cột */
+            gap: 10px; /* Khoảng cách giữa các ô */
+            padding: 10px;
+        }
+
+        /* Một ô truyện */
+        .panel {
+            background: #fff;
+            border: 4px solid #000;
+            border-radius: 4px;
+            overflow: hidden; /* Đảm bảo ảnh không tràn viền */
+        }
+        
+        /* Ô truyện đặc biệt (chiếm 2 cột) */
+        .panel.full-width {
+            grid-column: span 2; /* Chiếm hết chiều ngang */
+        }
+        
+        .panel img {
+            width: 100%;
             height: auto;
             display: block;
-            margin: 25px auto; /* Căn ảnh ra giữa */
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
-        p {
-            font-size: 1.1em;
+
+        /* Hộp thoại / Chú thích */
+        .caption {
+            background: #fefc9f; /* Nền vàng nhạt */
+            border: 3px solid #000;
+            margin: 10px;
+            padding: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
         }
-        blockquote {
-            font-size: 1.2em;
-            font-style: italic;
-            background: #f9f9f9;
-            border-left: 5px solid #007bff;
-            padding: 15px 20px;
-            margin: 20px 0;
+        
+        .caption p {
+            margin: 0;
+        }
+        
+        /* Bong bóng lời thoại */
+        .speech-bubble {
+            position: relative;
+            background: #00aaff; /* Nền xanh */
+            color: #fff;
+            border: 3px solid #000;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 10px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        /* Cái "đuôi" của bong bóng */
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -20px; /* Chỉa xuống dưới */
+            left: 50px;
+            border: 20px solid transparent;
+            border-top-color: #00aaff; /* Màu nền */
+            border-bottom: 0;
+        }
+        
+        /* Căn chỉnh cho thiết bị di động */
+        @media (max-width: 768px) {
+            .panel-grid {
+                grid-template-columns: 1fr; /* Chỉ 1 cột trên điện thoại */
+            }
+            /* Tắt chế độ 2 cột trên điện thoại */
+            .panel.full-width {
+                grid-column: span 1;
+            }
+            .comic-title {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>📖 Rùa và Thỏ</h1>
-        <p>Câu chuyện ngụ ngôn kinh điển về sự kiên trì và tính chủ quan.</p>
+
+    <div class="comic-book">
         
-        <h2>🐰 Chú Thỏ Khoác Lác</h2>
-        <p>Ở một khu rừng nọ, có một chú thỏ lúc nào cũng chỉ thích khoác lác về tài chạy nhanh như gió của mình. Gặp ai chú ta cũng phải khoe khoang: "Tớ chạy rất nhanh. Tớ là nhanh nhất đấy!".</p>
-        <img src="anh-1.jpg.png" alt="Thỏ tự tin khoe tài">
+        <h1 class="comic-title comic-font">Rùa và Thỏ</h1>
 
-        <h2>🐢 Lời Thách Đấu</h2>
-        <p>Mệt mỏi khi ngày nào cũng phải nghe những lời khoe khoang của thỏ và chế nhạo mình chậm chạp, Rùa đưa ra lời thách thức thỏ chạy thi với mình.</p>
-        <img src="anh-2.jpg.png" alt="Rùa thách đấu Thỏ">
+        <div class="panel-grid">
+            
+            <div class="panel">
+                <img src="anh-1.jpg.png" alt="Thỏ khoác lác">
+                <div class="speech-bubble comic-font">
+                    "Tớ là nhanh nhất đấy!"
+                </div>
+            </div>
 
-        <h2>🏁 Cuộc Đua Bắt Đầu</h2>
-        <p>Tất cả các loài động vật trong rừng đều rất ngạc nhiên và tập trung rất đông đề xem rùa và thỏ chạy thi. Hai bạn thỏ và rùa đứng ở vạch xuất phát sẵn sàng cho cuộc đua.</p>
-        <img src="anh-3.jpg.png" alt="Vạch xuất phát">
-        <p>Khi có hiệu lệnh "1... 2... 3... bắt đầu!", Thỏ chạy vụt đi rất nhanh, loáng một cái quay lại đã không thấy bóng dáng rùa đâu.</p>
-        <img src="anh-4.jpg.png" alt="Thỏ chạy vụt đi">
+            <div class="panel">
+                <img src="anh-2.jpg.png" alt="Rùa thách đấu Thỏ">
+                <div class="caption">
+                    <p>Mệt mỏi vì bị chế nhạo, Rùa quyết định thách đấu Thỏ một cuộc thi chạy.</p>
+                </div>
+            </div>
 
-        <h2>😴 Sự Chủ Quan Của Thỏ</h2>
-        <p>Thỏ cười khẩy và quyết định dừng lại để nghỉ ngơi. Nó mỉa mai: "Đúng là chậm như rùa, làm sao mà thắng nổi thỏ ta chứ!". Nghĩ vậy, Thỏ nằm dài ra đường để ngủ, tin rằng còn lâu rùa mới đuổi kịp.</p>
-        <p>Trong lúc đó, rùa vẫn miệt mài chạy, chạy, chạy mãi không bao giờ dừng.</p>
-        <img src="anh-5.jpg.png" alt="Thỏ ngủ quên và Rùa kiên trì vượt qua">
+            <div class="panel full-width"> <img src="anh-3.jpg.png" alt="Vạch xuất phát">
+                <div class="caption">
+                    <p>Cuộc đua bắt đầu! "1... 2... 3... BẮT ĐẦU!"</p>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <img src="anh-4.jpg.png" alt="Thỏ chạy vụt đi">
+                <div class="caption">
+                    <p>Thỏ chạy vụt đi như một cơn gió, bỏ Rùa lại phía sau.</p>
+                </div>
+            </div>
 
-        <h2>🏆 Kết Quả Bất Ngờ</h2>
-        <p>Cho đến lúc rùa vượt qua chỗ thỏ đang nằm ngủ và gần chạm tới vạch kết thúc. Động vật trong rừng hò hét cổ vũ rất lớn cho rùa, thỏ giật mình tỉnh giấc.</p>
-        <img src="anh-6.jpg.png" alt="Thỏ hoảng hốt tỉnh dậy">
-        <p>Nó vội vàng chạy trở lại, nhưng đã quá muộn. Rùa đã cán đích trước và chiến thắng cuộc đua bằng tinh thần chăm chỉ và nghiêm túc của mình. Thỏ vô cùng xấu hổ và lùi tít vào trong rừng sâu.</p>
-        <img src="anh-7.jpg.png" alt="Rùa chiến thắng cuộc đua">
+            <div class="panel">
+                <img src="anh-5.jpg.png" alt="Thỏ ngủ quên">
+                <div class="caption">
+                    <p>Chủ quan, Thỏ nằm dài ra ngủ. Trong khi đó, Rùa kiên trì bò qua...</p>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <img src="anh-6.jpg.png" alt="Thỏ hoảng hốt tỉnh dậy">
+                 <div class="speech-bubble comic-font">
+                    "ÔI KHÔNG!"
+                </div>
+                <div class="caption">
+                    <p>Tiếng cổ vũ làm Thỏ giật mình tỉnh giấc!</p>
+                </div>
+            </div>
 
-        <h2>💡 Bài học từ câu chuyện</h2>
-        <blockquote>
-            Những người dù nhanh nhẹn nhưng luôn cẩu thả trong suy nghĩ và hành động cuối cùng cũng sẽ bị đánh bại bởi những người siêng năng, cẩn thận, dù bản chất họ chậm hơn rất nhiều.
-        </blockquote>
-    </div>
-</body>
+            <div class="panel">
+                <img src="anh-7.jpg.png" alt="Rùa chiến thắng">
+                <div class="caption">
+                    <p>Rùa đã cán đích trước bằng sự chăm chỉ và nghiêm túc của mình!</p>
+                </div>
+            </div>
+            
+            <div class="panel full-width">
+                 <div class="caption">
+                    <p><strong>Bài học:</strong> Những người siêng năng, cẩn thận cuối cùng sẽ đánh bại những người nhanh nhẹn nhưng cẩu thả.</p>
+                </div>
+            </div>
+
+        </div> </div> </body>
 </html>
